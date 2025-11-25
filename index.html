@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+
+Gamepad API Test
+
+Written in 2013 by Ted Mielczarek <ted@mielczarek.org>
+
+To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
+
+-->
+<script type="text/javascript" src="gamepad.js"></script>
+<script type="text/javascript" src="keyboard.js"></script>
+<script type="text/javascript" src="player.js"></script>
+<script type="text/javascript" src="bonus.js"></script>
+<script type="text/javascript" src="game.js"></script>
+<script type="text/javascript" src="bonus_addition.js"></script>
+<script type="text/javascript" src="malus_addition.js"></script>
+<link rel="stylesheet" href="picnic.css">
+<style>
+div {
+  font-size: x-large;
+  font-weight:bolder;
+}
+html,body{
+  margin: 0;          /* pas de margin par défaut */
+  height: 100%;       /* nécessaire si body doit prendre 100% */
+  overflow: hidden;   /* empêche le scroll */
+  background-image:url('background.jpg');
+  background-size:cover;
+}
+.bonus_icon{
+  width: 10vh;
+  vertical-align: top;
+}
+</style>
+</head>
+<body>
+  <div class="flex four grow">
+    <div>
+      Points: <span id="points0">0</span><br />
+      Niveau: <span id="level0">0</span><br />
+      <div class="bonus">
+        Bonus(Y) <br /><span id="bonus0"></span> 
+      </div>
+      <div class="bonus">
+        Malus(X) <br /><span id="malus0"></span>
+      </div>
+    </div>
+    <div>
+      Player 1:<br />
+      <div id="player0" style="height:100vh;">Press a button on your controller to start</div>
+    </div>
+    <div>
+        Player 2:<br />
+        <div id="player1" style="height:100vh;">Press a button on your controller to start</div>
+    </div>
+    <div>
+      Points: <span id="points1">0</span><br />
+      Niveau: <span id="level1">0</span><br />
+      <div class="bonus">
+        Bonus(Y) <br /><span id="bonus1"></span> 
+      </div>
+      <div class="bonus">
+        Malus(X) <br /><span id="malus1"></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
