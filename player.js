@@ -135,12 +135,12 @@ class Player {
         if(linesCleared === 4){
             if(randomInt(0,1) == 0){
                 let levelbonus=allBonus.filter(b => b.level <= this.level );
-                console.log(levelbonus);
+                //console.log(levelbonus);
                 if(this.bonus.length == 0) this.bonus.push(levelbonus[randomInt(0,levelbonus.length-1)]);
             }
             else{
                 let levelmalus=allMalus.filter(b => b.level <= this.level );
-                console.log(levelmalus);
+                //console.log(levelmalus);
                 if(this.malus.length == 0) this.malus.push(levelmalus[randomInt(0,levelmalus.length-1)]);
             }
             //Ajouter un random pour choisir entre un bonus et un malus

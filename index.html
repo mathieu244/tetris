@@ -37,13 +37,40 @@ html,body{
   width: 10vh;
   vertical-align: top;
 }
+.flex div{
+  max-height: 650px;
+}
+.img-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.img-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128,128,128,0.5); /* gris + transparence */
+}
+.prev-bonus{
+  display: block; 
+  margin: 2px; 
+  overflow-x: auto;   /* scroll horizontal si besoin */
+  white-space: nowrap; /* empêche le wrap */
+}
+
+#all_malus_0,#all_malus_1{
+  padding: 0;
+}
 </style>
 </head>
 <body>
   <div class="flex four grow">
     <div>
       Points: <span id="points0">0</span><br />
-      Niveau: <span id="level0">0</span><br />
+      Niveau: <span id="level0">1</span><br />
       <div class="bonus">
         Bonus(Y) <br /><span id="bonus0"></span> 
       </div>
@@ -61,7 +88,7 @@ html,body{
     </div>
     <div>
       Points: <span id="points1">0</span><br />
-      Niveau: <span id="level1">0</span><br />
+      Niveau: <span id="level1">1</span><br />
       <div class="bonus">
         Bonus(Y) <br /><span id="bonus1"></span> 
       </div>

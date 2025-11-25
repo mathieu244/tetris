@@ -69,6 +69,7 @@ const allBonus = [
     }}),
     new Bonus({
       title: "2X",
+      icon: "assets/remove-lines.png",
       level: 2,
       effect: function(player){
         //Enleve 2 ligne du haut
@@ -197,7 +198,7 @@ window.addEventListener("gamepadaxis", e => {
   if (axis=="Y"){
     current_player.canMove(current_player.current_piece, current_player.pieceY+1, current_player.pieceX)
   }
-    current_player.drawGrid();
+  current_player.drawGrid();
 });
 
 // game loop
@@ -234,4 +235,10 @@ function gameLoop(timestamp) {
   requestAnimationFrame(gameLoop);
 }
 
-requestAnimationFrame(gameLoop);
+// Démarrage quand tout est en place
+document.addEventListener("DOMContentLoaded", () => {
+
+  // affichage du preview bonus/malus
+  //Démarrage de la gameloop
+  requestAnimationFrame(gameLoop);
+});
