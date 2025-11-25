@@ -116,8 +116,8 @@ const allMalus = [//Malus de niveau 1
 
 window.addEventListener("gamepadbuttondown", e => {
   const { gamepad, button } = e.detail;
-  if(!PLAYERS.includes(new Player(gamepad.index))){
-    PLAYERS.push(new Player(gamepad.index))
+  if(PLAYERS[gamepad.index] == undefined){
+    PLAYERS[gamepad.index] = new Player(gamepad.index);
   }
   current_player = PLAYERS[gamepad.index];
 
