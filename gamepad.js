@@ -1,4 +1,4 @@
-const GAMEPADMAPPING=["A","B","X","Y","L1", "R2","L2","R1"]
+const GAMEPADMAPPING=["A","B","X","Y","L1", "R2","L2","R1","SELECT", "START"]
 const AXISMAPPING=["X","Y"]
 class GamepadEvents {
   constructor({

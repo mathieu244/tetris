@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<meta charset="utf-8">
-<!--
-
-Gamepad API Test
-
-Written in 2013 by Ted Mielczarek <ted@mielczarek.org>
-
-To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
-
-You should have received a copy of the CC0 Public Domain Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
-
--->
-<script type="text/javascript" src="gamepad.js"></script>
-<script type="text/javascript" src="keyboard.js"></script>
-<script type="text/javascript" src="player.js"></script>
-<script type="text/javascript" src="bonus.js"></script>
-<script type="text/javascript" src="game.js"></script>
-<script type="text/javascript" src="bonus_addition.js"></script>
-<script type="text/javascript" src="malus_addition.js"></script>
-<link rel="stylesheet" href="picnic.css">
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris</title>
+  <!-- Vue 3 -->
+  <script src="assets/vue.global.prod.js"></script>
+  <!-- Vue Router 4 -->
+  <script src="assets/vue-router.global.prod.js"></script>
+  <script src="help.js"></script>
+  <script src="list.js"></script>
+  <script src="home.js"></script>
+  <script src="highscore.js"></script>
+  <script src="gameboard.js"></script>
+  <script type="text/javascript" src="gamepad.js"></script>
+  <script type="text/javascript" src="keyboard.js"></script>
+  <script type="text/javascript" src="player.js"></script>
+  <script type="text/javascript" src="bonus.js"></script>
+  <script type="text/javascript" src="game.js"></script>
+  <script type="text/javascript" src="bonus_addition.js"></script>
+  <script type="text/javascript" src="malus_addition.js"></script>
+  <link rel="stylesheet" href="assets/picnic.css">
+    <style>
 div {
   font-size: x-large;
   font-weight:bolder;
@@ -64,38 +64,54 @@ html,body{
 #all_malus_0,#all_malus_1{
   padding: 0;
 }
+.menu-top{
+  margin-top:20vh;
+}
+.menu-buttons span{
+  margin: 2vh;
+}
+.button.clicked {
+    transform: translateY(1px);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+    background-color: #58c7af; /* optionnel pour différencier */
+}
+.content select{
+  width: 60px;
+}
 </style>
 </head>
 <body>
-  <div class="flex four grow">
-    <div>
-      Points: <span id="points0">0</span><br />
-      Niveau: <span id="level0">1</span><br />
-      <div class="bonus">
-        Bonus(Y) <br /><span id="bonus0"></span> 
-      </div>
-      <div class="bonus">
-        Malus(X) <br /><span id="malus0"></span>
-      </div>
-    </div>
-    <div>
-      Player 1:<br />
-      <div id="player0" style="height:100vh;">Press a button on your controller to start</div>
-    </div>
-    <div>
-        Player 2:<br />
-        <div id="player1" style="height:100vh;">Press a button on your controller to start</div>
-    </div>
-    <div>
-      Points: <span id="points1">0</span><br />
-      Niveau: <span id="level1">1</span><br />
-      <div class="bonus">
-        Bonus(Y) <br /><span id="bonus1"></span> 
-      </div>
-      <div class="bonus">
-        Malus(X) <br /><span id="malus1"></span>
-      </div>
-    </div>
+  <div id="app">
+<!--    <nav>
+      <router-link to="/">Accueil</router-link> |
+      <router-link to="/about">À propos</router-link> |
+      <router-link to="/hs">highscore</router-link> |
+      <router-link to="/gb">Gameboard</router-link>
+    </nav>-->
+    <router-view></router-view>
   </div>
+
+  <script>
+    const { createApp } = Vue;
+  const { createRouter, createWebHashHistory } = VueRouter;
+
+  const routes = [
+    { path: '/', component: Home },
+    { path: '/help', component: Help }, // le composant défini dans about.js
+    { path: '/hs', component: Highscore },
+    { path: '/list', component: List },
+    { path: '/gb', component: Gameboard } 
+  ];
+
+  const router = createRouter({
+    history: createWebHashHistory(),
+    routes
+  });
+  
+  window.router = router;
+  const app = createApp({ });
+  app.use(router);
+  app.mount('#app');
+  </script>
 </body>
 </html>

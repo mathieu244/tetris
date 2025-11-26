@@ -37,6 +37,17 @@ window.addEventListener("keydown", e => {
         detail: { gamepad:{ index:1, isKeyboard:true }, button:"A", value:1 }
       }));
       break;
+    case "KeyO":      
+        window.dispatchEvent(new CustomEvent("gamepadbuttondown", {
+        detail: { gamepad:{ index:1, isKeyboard:true }, button:"SELECT", value: 1 }
+    }));
+    break;
+    case "KeyP":      
+        window.dispatchEvent(new CustomEvent("gamepadbuttondown", {
+        detail: { gamepad:{ index:1, isKeyboard:true }, button:"START", value: 1 }
+    }));
+    break;
+
     // Controlleur 0 (Gauche)
     case "KeyA":  
     window.dispatchEvent(new CustomEvent("gamepadaxis", {
@@ -66,6 +77,16 @@ window.addEventListener("keydown", e => {
     case "KeyX":      
         window.dispatchEvent(new CustomEvent("gamepadbuttondown", {
         detail: { gamepad:{ index:0, isKeyboard:true }, button:"X", value: 1 }
+    }));
+    break;
+    case "KeyC":      
+        window.dispatchEvent(new CustomEvent("gamepadbuttondown", {
+        detail: { gamepad:{ index:0, isKeyboard:true }, button:"SELECT", value: 1 }
+    }));
+    break;
+    case "KeyV":      
+        window.dispatchEvent(new CustomEvent("gamepadbuttondown", {
+        detail: { gamepad:{ index:0, isKeyboard:true }, button:"START", value: 1 }
     }));
     break;
     case "Space":      

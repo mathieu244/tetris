@@ -21,13 +21,39 @@ class Player {
         this.bonus=bonus;
         this.malus=malus;
         this.gameOver=false;
+        this.name="";
         //build board
     }
 
     initialized() {
         return this.playerId >= 0;
     }
+    initialize(id) {
+        this.playerId=id;
+        this.draw();
+        this.canvas = document.getElementById("board"+id);
+        this.ctx = this.canvas.getContext("2d");
+        this.board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+    /*    this.board[19]=[1,1,1,1,1,1,1,1,1,0];
+        this.board[18]=[1,1,1,1,1,1,1,1,1,0];
+        this.board[17]=[1,1,1,1,1,1,1,1,1,0];
+        this.board[16]=[1,1,1,1,1,1,1,1,1,0];
+        this.board[15]=[1,1,1,1,1,1,1,1,1,0];
+        this.board[14]=[1,1,1,1,1,1,1,1,1,0];
+        this.board[13]=[1,1,1,1,1,1,1,1,1,0];
+    */
+//        this.drawGrid();
 
+        //Effet qui enleve une ligne a la fin
+//        console.log(allBonus);
+        console.log(allBonus[0]);
+        console.log(allMalus[2]);
+        this.bonus.push(allBonus[0]);
+        this.malus.push(allMalus[2]);
+        this.drawStack();
+
+//        this.drawStack();
+    }
     draw(){
         document.getElementById("player"+this.playerId).innerHTML = `
         <canvas id="board${this.playerId}" width="400" height="600"></canvas>
@@ -117,6 +143,7 @@ class Player {
 
         // Calcul des points
         this.points += pointage[linesCleared];
+        console.log(this.playerId);
         document.getElementById("points"+this.playerId).innerHTML = `
         ${this.points}
         `;
