@@ -1,5 +1,5 @@
 // gameboard.js
-const GAMESTATES={STOP:0,PLAY:1,NAME:2};
+const GAMESTATES={STOP:0,PLAY:1,NAME:2, ENDED:3};
 
 const Gameboard = {
   data(){
@@ -11,7 +11,7 @@ const Gameboard = {
   },
     methods:{
          gameLoop(timestamp) {
-          if(this.state == GAMESTATES.STOP) return;
+          if(this.state == GAMESTATES.STOP || this.state == GAMESTATES.ENDED) return;
 
             if (!this.lastDrop) this.lastDrop = timestamp;
           const delta = timestamp - this.lastDrop;
@@ -29,7 +29,7 @@ const Gameboard = {
                       //GameOver
                       player.current_piece = undefined;
                       player.gameOver=true;
-                      this.state = GAMESTATES.STOP;
+                      this.state = GAMESTATES.ENDED;
                       //Save player et points
                       let allScores = JSON.parse(localStorage.getItem("highscores")) || [];
 
@@ -38,6 +38,7 @@ const Gameboard = {
                       });
                       // Stocker
                       localStorage.setItem("highscores", JSON.stringify(allScores));
+                      console.log(player.gameOver);
           //            gameOver.play();
                   }
                   }
@@ -102,6 +103,16 @@ const Gameboard = {
               }
                 //Trap le START pour valider
               return
+            }
+
+            if(this.state == GAMESTATES.ENDED){
+              // Start quand une partie est fini, on replay avec les memes nom de joueurs
+              if(button == "START"){
+                PLAYERS.forEach((p,i) => {p.reset()});
+                this.state = GAMESTATES.PLAY;
+                this.start_gameloop();
+                return
+              }
             }
             // On sassure que le player est initier
             if(button == "START"){

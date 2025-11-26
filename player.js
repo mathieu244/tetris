@@ -28,13 +28,13 @@ class Player {
     initialized() {
         return this.playerId >= 0;
     }
-    initialize(id) {
-        this.playerId=id;
-        this.draw();
-        this.canvas = document.getElementById("board"+id);
-        this.ctx = this.canvas.getContext("2d");
+    reset(){
+//        document.getElementById(`bonus${this.playerId}`).innerHTML = "";
+//        document.getElementById(`malus${this.playerId}`).innerHTML = "";
         this.board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
-    /*    this.board[19]=[1,1,1,1,1,1,1,1,1,0];
+        this.points = 0;
+        this.gameOver=false;
+            /*    this.board[19]=[1,1,1,1,1,1,1,1,1,0];
         this.board[18]=[1,1,1,1,1,1,1,1,1,0];
         this.board[17]=[1,1,1,1,1,1,1,1,1,0];
         this.board[16]=[1,1,1,1,1,1,1,1,1,0];
@@ -42,15 +42,19 @@ class Player {
         this.board[14]=[1,1,1,1,1,1,1,1,1,0];
         this.board[13]=[1,1,1,1,1,1,1,1,1,0];
     */
-//        this.drawGrid();
-
-        //Effet qui enleve une ligne a la fin
-//        console.log(allBonus);
-        console.log(allBonus[0]);
-        console.log(allMalus[2]);
+        this.bonus.length=0;
+        this.malus.length=0;
         this.bonus.push(allBonus[0]);
         this.malus.push(allMalus[2]);
+        this.generatePiece();
         this.drawStack();
+    }
+    initialize(id) {
+        this.playerId=id;
+        this.draw();
+        this.canvas = document.getElementById("board"+id);
+        this.ctx = this.canvas.getContext("2d");
+        this.reset();
 
 //        this.drawStack();
     }
@@ -63,7 +67,7 @@ class Player {
       //this.current_piece = pieces[0];
       this.current_piece = pieces[Math.floor(Math.random() * 7)];
       this.pieceX = 3;
-      this.pieceY = 0;
+      this.pieceY = -2;
     }
     //Fonction critique, doit etre en "mutex"
     // si la piece se place et retourne true, on la place sinon on retourne false
@@ -85,7 +89,9 @@ class Player {
             // deborde du tableau en X
             if (return_value == true && coordonee.piece != 0 && (coordonee.x >= this.board[0].length || coordonee.x < 0 )) return_value=false;
             //autre piece a la nouvelle position
-            if (return_value == true && coordonee.piece !==0 && this.board[coordonee.y][coordonee.x] !== 0) return_value=false;
+            if(coordonee.y >= 0){
+                if (return_value == true && coordonee.piece !==0 && this.board[coordonee.y][coordonee.x] !== 0) return_value=false;
+            }
         }
 
         if(return_value){
@@ -251,7 +257,7 @@ class Player {
                     }
                 }
             }
-
+            
             // dessiner la cellule
             this.ctx.fillStyle = colors[colorIndex];
             this.ctx.fillRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
