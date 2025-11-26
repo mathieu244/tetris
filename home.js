@@ -30,12 +30,12 @@ const Home = {
             // en bas
             console.log(value);
                 console.log(buttons);
-            if(value > 0)
+            if(value < 0)
             {
                 buttons[clicked_index-1 < 0 ? 0 : clicked_index-1].classList.add("clicked");
             }
             // en haut
-            if(value < 0){
+            if(value > 0){
                 buttons[clicked_index == buttons.length-1 ? buttons.length-1 : clicked_index+1].classList.add("clicked");
             }
         }

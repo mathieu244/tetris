@@ -1,11 +1,16 @@
 const GAMEPADMAPPING=["A","B","X","Y","L1", "R2","L2","R1","SELECT", "START"]
 const AXISMAPPING=["X","Y"]
+function roundWithThreshold(x) {
+  if (x >= 0.75) return 1;
+  if (x <= -0.75) return -1;
+  return 0;
+}
 class GamepadEvents {
   constructor({
     pollInterval = 0,
     axisThreshold = 0.05,
     buttonThreshold = 0.5,
-    axisDebounce = 40 // en ms
+    axisDebounce = 70 // en ms
   } = {}) {
 
     this.pollInterval = pollInterval;
@@ -112,7 +117,7 @@ class GamepadEvents {
       this._axisEmit[key]({
         gamepad: g,
         axis: AXISMAPPING[i],
-        value: v,
+        value: roundWithThreshold(v),
         delta: v - p,
       });
     });
