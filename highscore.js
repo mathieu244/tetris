@@ -112,7 +112,7 @@ const Highscore = {
   </style>
 </head>
 <body>
-  <h1>Highscore</h1>
+  <h1>Meilleurs pointages</h1>
 
   <table id="highscoreTable">
     <thead>

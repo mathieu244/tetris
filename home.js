@@ -53,15 +53,15 @@ const Home = {
   template: `
     <div class="flex demo">
         <div>  </div>
-        <div class="menu-top">BlockBattle!<br/><i style="font-size: small;">Press Start to enter/Select to exit</i></div>
+        <div class="menu-top">BlockBattle!<br/><i style="font-size: small;">Appuyez sur "Start" pour démarrer ou "Select" pour sortir</i></div>
     </div>
     <div class="flex demo">
         <div></div>
         <div id="menu-select" class="menu-buttons">
-            <span class="button stack icon-picture clicked" path="/gb">Play!</span>
-            <span class="button stack icon-puzzle" path="/hs">Highscore</span>
-            <span class="button stack icon-file-code" path="/list">Bonus/Malus list!</span>
-            <span class="button stack icon-help-circled" path="/help">Help</span>
+            <span class="button stack icon-picture clicked" path="/gb">Jouez!</span>
+            <span class="button stack icon-puzzle" path="/hs">Meilleurs pointages!</span>
+            <span class="button stack icon-file-code" path="/list">Liste des Bonus/Malus!</span>
+            <span class="button stack icon-help-circled" path="/help">Aide</span>
         </div>
         <div></div>
     </div>

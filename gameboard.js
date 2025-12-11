@@ -279,14 +279,14 @@ const Gameboard = {
   <label for="modal_0" class="overlay"></label>
   <article>
     <header>
-      <h3>Enter your name player <span id="modal_show_player_number">1</span>!</h3>
+      <h3>Choisisez votre nom joueur <span id="modal_show_player_number">1</span>!</h3>
       <label for="modal_0" class="close">&times;</label>
     </header>
     <section id="player_name_0" class="content">
     </section>
     <footer>
       <label for="modal_0" class="button dangerous">
-        Press Start to confirm and start!
+        Appuyez sur "Start" pour confirmer!
       </label>
     </footer>
   </article>
@@ -303,12 +303,12 @@ const Gameboard = {
       </div>
     </div>
     <div>
-      Player 1: <span id="player_show_name_0"></span><br />
-      <div id="player0" style="height:100vh;"><br /><br /><br /><br /><br />START pour commencer<br />SELECT pour votre nom</div>
+      Joueur 1: <span id="player_show_name_0"></span><br />
+      <div id="player0" style="height:100vh;"><br /><br /><br /><br /><br />START pour commencer<br />SELECT pour choisir votre nom</div>
     </div>
     <div>
-        Player 2: <span id="player_show_name_1"></span><br />
-        <div id="player1" style="height:100vh;"><br /><br /><br /><br /><br />START pour commencer<br />SELECT pour votre nom</div>
+        Joueur 2: <span id="player_show_name_1"></span><br />
+        <div id="player1" style="height:100vh;"><br /><br /><br /><br /><br />START pour commencer<br />SELECT pour choisir votre nom</div>
     </div>
     <div>
       Points: <span id="points1">0</span><br />
