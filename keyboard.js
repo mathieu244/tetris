@@ -4,6 +4,8 @@ window.addEventListener("keydown", e => {
   if (keys[e.code]) return; // éviter répétitions
   keys[e.code] = true;
 
+      console.log(e.code);
+
   switch (e.code) {
     // Controlleur 1
     case "ArrowLeft":  
@@ -19,11 +21,11 @@ window.addEventListener("keydown", e => {
 
     case "ArrowUp":    
     window.dispatchEvent(new CustomEvent("gamepadaxis", {
-        detail: { gamepad:{ index:1, isKeyboard:true }, axis:"Y", value:1 }
+        detail: { gamepad:{ index:1, isKeyboard:true }, axis:"Y", value:-1 }
     }));
     break;
     case "ArrowDown":      window.dispatchEvent(new CustomEvent("gamepadaxis", {
-        detail: { gamepad:{ index:1, isKeyboard:true }, axis:"Y", value:-1 }
+        detail: { gamepad:{ index:1, isKeyboard:true }, axis:"Y", value:1 }
     }));
     break;
     case "ControlRight":
@@ -37,12 +39,12 @@ window.addEventListener("keydown", e => {
         detail: { gamepad:{ index:1, isKeyboard:true }, button:"A", value:1 }
       }));
       break;
-    case "KeyO":      
+    case "Backslash":      
         window.dispatchEvent(new CustomEvent("gamepadbuttondown", {
         detail: { gamepad:{ index:1, isKeyboard:true }, button:"SELECT", value: 1 }
     }));
     break;
-    case "KeyP":      
+    case "Enter":      
         window.dispatchEvent(new CustomEvent("gamepadbuttondown", {
         detail: { gamepad:{ index:1, isKeyboard:true }, button:"START", value: 1 }
     }));
@@ -62,11 +64,11 @@ window.addEventListener("keydown", e => {
 
     case "KeyW":    
     window.dispatchEvent(new CustomEvent("gamepadaxis", {
-        detail: { gamepad:{ index:0, isKeyboard:true }, axis:"Y", value:1 }
+        detail: { gamepad:{ index:0, isKeyboard:true }, axis:"Y", value:-1 }
     }));
     break;
     case "KeyS":      window.dispatchEvent(new CustomEvent("gamepadaxis", {
-        detail: { gamepad:{ index:0, isKeyboard:true }, axis:"Y", value:-1 }
+        detail: { gamepad:{ index:0, isKeyboard:true }, axis:"Y", value:1 }
     }));
     break;
     case "KeyZ":      
